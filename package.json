@@ -1,0 +1,27 @@
+{
+  "name": "bestcastgroup-workspace",
+  "version": "1.0.0",
+  "description": "Full-stack application workspace with React frontend, Node.js/Express backend, and MongoDB Mongoose database.",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\"",
+    "dev:backend": "npm run dev --prefix backend",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "mongo:start": "docker start mongodb || docker run -d --name mongodb -p 27017:27017 --restart unless-stopped mongo:6.0",
+    "mongo:stop": "docker stop mongodb",
+    "install:all": "npm install --prefix backend && npm install --prefix frontend",
+    "build:frontend": "npm run build --prefix frontend"
+  },
+  "keywords": [
+    "react",
+    "nodejs",
+    "express",
+    "mongodb",
+    "mongoose",
+    "fullstack"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
