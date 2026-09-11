@@ -1,9 +1,11 @@
 import React from 'react';
-import { Diamond, CheckSquare, Layers, Box, Sparkles } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import { Diamond, CheckSquare, Layers, Box, Sparkles, FileText, Send } from 'lucide-react';
 import HeroLottieBanner from '../components/HeroLottieBanner';
 
 export default function HomePage() {
+  const navigate = useNavigate();
+
   const values = [
     {
       title: 'INTEGRITY',
@@ -100,6 +102,76 @@ export default function HomePage() {
     <div>
       {/* 1. Hero Section with Origin Lottie Animation and Net Lattice Background */}
       <HeroLottieBanner />
+
+      {/* 1.5. Compact & Simple Customer & Supplier Enquiry Banner (Reference Image Style) */}
+      <section className="bc-simple-enquiry-section">
+        <div className="bc-container">
+          <div className="bc-simple-enquiry-banner">
+            {/* Left Content */}
+            <div className="bc-simple-enquiry-left">
+              <div className="bc-simple-enquiry-pill">
+                <FileText size={15} />
+                <span>Customer & Supplier Enquiry</span>
+              </div>
+              <h2 className="bc-simple-enquiry-title">
+                Tell us what kind of casting or supply solution you need.
+              </h2>
+              <p className="bc-simple-enquiry-subtext">
+                Share your requirements, component specifications, or vendor profile. Your enquiry will connect directly with our engineering and supply chain experts.
+              </p>
+            </div>
+
+            {/* Right White Card Form */}
+            <div className="bc-simple-enquiry-card">
+              <form onSubmit={(e) => { e.preventDefault(); navigate('/enquiries'); }}>
+                <div className="bc-simple-enquiry-grid">
+                  <div className="bc-simple-field-group">
+                    <label className="bc-simple-field-label">Your Name</label>
+                    <input
+                      type="text"
+                      className="bc-simple-field-input"
+                      placeholder="e.g. Alex Smith"
+                    />
+                  </div>
+                  <div className="bc-simple-field-group">
+                    <label className="bc-simple-field-label">I am a</label>
+                    <select className="bc-simple-field-select" defaultValue="Customer / Buyer">
+                      <option value="Customer / Buyer">Customer / Buyer</option>
+                      <option value="Supplier / Vendor">Supplier / Vendor</option>
+                      <option value="General Inquiry">General Inquiry</option>
+                    </select>
+                  </div>
+                  <div className="bc-simple-field-group">
+                    <label className="bc-simple-field-label">Business Email</label>
+                    <input
+                      type="email"
+                      className="bc-simple-field-input"
+                      placeholder="e.g. alex@company.com"
+                    />
+                  </div>
+                  <div className="bc-simple-field-group">
+                    <label className="bc-simple-field-label">Company Name</label>
+                    <input
+                      type="text"
+                      className="bc-simple-field-input"
+                      placeholder="e.g. Global Tech Inc."
+                    />
+                  </div>
+                </div>
+
+                <Link to="/enquiries" className="bc-simple-enquiry-btn">
+                  <Send size={16} />
+                  <span>Send Enquiry & Go to Contact Us</span>
+                </Link>
+
+                {/* <div className="bc-simple-enquiry-foot">
+                  Or <Link to="/enquiries">click here to redirect directly to full Contact Us page</Link>
+                </div> */}
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* 2. Dark Furnace Section: "Its Best Cast with Us" */}
       <section className="bc-furnace-section">

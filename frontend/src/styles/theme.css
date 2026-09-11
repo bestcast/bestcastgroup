@@ -129,7 +129,7 @@ img {
   padding: 0.5rem 0;
 }
 
-.bc-nav-link:hover, 
+.bc-nav-link:hover,
 .bc-nav-link.active {
   color: #201d5a;
 }
@@ -207,6 +207,7 @@ img {
     opacity: 0;
     transform: translateY(-8px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -265,13 +266,16 @@ img {
   .bc-nav {
     display: none;
   }
+
   .bc-mobile-toggle {
     display: block;
   }
+
   .bc-header-inner {
     height: 76px;
     padding: 0 1.25rem;
   }
+
   .bc-logo-img {
     height: 56px;
   }
@@ -281,6 +285,8 @@ img {
 .bc-lottie-hero-section {
   position: relative;
   width: 100%;
+  min-height: 560px;
+  padding: 2.5rem 0;
   background-color: #f1f2f4;
   display: flex;
   justify-content: center;
@@ -291,6 +297,7 @@ img {
 
 .bc-lottie-hero-inner {
   width: 100%;
+  height: 100%;
   position: relative;
   display: flex;
   justify-content: center;
@@ -299,12 +306,15 @@ img {
 
 .bc-lottie-container {
   width: 100%;
+  height: 100%;
   margin: 0 auto;
 }
 
 .bc-lottie-container svg {
   width: 100% !important;
-  height: auto !important;
+  height: 100% !important;
+  transform: scale(1.2);
+  transform-origin: center center;
   display: block;
 }
 
@@ -317,7 +327,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 400px;
+  min-height: 480px;
 }
 
 .bc-spinner {
@@ -337,13 +347,15 @@ img {
 
 @media (max-width: 992px) {
   .bc-lottie-hero-section {
-    min-height: 380px;
+    min-height: 450px;
+    padding: 1.5rem 0;
   }
 }
 
 @media (max-width: 768px) {
   .bc-lottie-hero-section {
-    min-height: 280px;
+    min-height: 340px;
+    padding: 1rem 0;
   }
 }
 
@@ -372,12 +384,12 @@ img {
 
 .bc-hero-title-highlight {
   color: var(--bc-orange);
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.15);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 /* Dark Foundry Furnace Section */
 .bc-furnace-section {
-  background: linear-gradient(rgba(0,0,0,0.82), rgba(0,0,0,0.85)), url('/uploads/2023/03/Gravity-Die-Casting-2-1080x720.jpg') center/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.85)), url('/uploads/2023/03/Gravity-Die-Casting-2-1080x720.jpg') center/cover no-repeat;
   color: #ffffff;
   padding: 5.5rem 0;
   text-align: center;
@@ -451,7 +463,7 @@ img {
   justify-content: space-around;
   align-items: center;
   text-align: center;
-  
+
   flex-wrap: wrap;
   gap: 2rem;
 }
@@ -539,7 +551,7 @@ img {
 
 /* Operational Excellence Banner */
 .bc-operational-banner {
-  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/uploads/2023/03/CNC-Machining-400x516.jpg') center/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/uploads/2023/03/CNC-Machining-400x516.jpg') center/cover no-repeat;
   color: #ffffff;
   padding: 6rem 0;
   text-align: center;
@@ -556,8 +568,8 @@ img {
 .bc-operational-box {
   max-width: 960px;
   margin: 0 auto;
-  background: rgba(0,0,0,0.5);
-  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   padding: 2.5rem;
   font-size: 0.95rem;
   line-height: 1.8;
@@ -640,8 +652,8 @@ img {
   color: #ffffff;
   padding: 4rem 0 3rem 0;
   position: relative;
-  background-image: 
-    radial-gradient(circle at 10% 20%, rgba(255,255,255,0.05) 0%, transparent 20%),
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 20%),
     linear-gradient(90deg, #106754 0%, #157e67 45%, #d6611e 65%, #f15a24 100%);
 }
 
@@ -679,7 +691,7 @@ img {
   align-items: center;
   flex-wrap: wrap;
   gap: 1.5rem;
-  border-top: 1px solid rgba(255,255,255,0.18);
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
   padding-top: 2rem;
   font-size: 0.88rem;
 }
@@ -844,7 +856,7 @@ img {
 }
 
 .bc-page-hero {
-  background: linear-gradient(rgba(7,37,64,0.92), rgba(7,37,64,0.92)), url("/uploads/2023/06/hero-bg.jpg") center/cover no-repeat;
+  background: linear-gradient(rgba(7, 37, 64, 0.92), rgba(7, 37, 64, 0.92)), url("/uploads/2023/06/hero-bg.jpg") center/cover no-repeat;
   color: #ffffff;
   padding: 5rem 0 4rem 0;
   text-align: center;
@@ -911,6 +923,7 @@ img {
   .bc-hero-title-main {
     font-size: 4rem;
   }
+
   .bc-split-content {
     padding: 3.5rem 2.5rem;
   }
@@ -920,70 +933,89 @@ img {
   .bc-hero-title-main {
     font-size: 3.2rem;
   }
+
   .bc-hero-screen {
     padding: 5rem 0 4rem 0;
   }
+
   .bc-furnace-section {
     padding: 4rem 0;
   }
+
   .bc-furnace-heading {
     font-size: 2.2rem;
     margin-bottom: 2.5rem;
   }
+
   .bc-two-column-block {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
+
   .bc-values-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
   }
+
   .bc-cap-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 2.5rem 1.8rem;
   }
+
   .bc-gallery-5 {
     grid-template-columns: repeat(3, 1fr);
   }
+
   .bc-gallery-4 {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
+
   .bc-mosaic-grid {
     grid-template-columns: repeat(3, 1fr);
   }
+
   .bc-two-col-grid {
     gap: 2rem 2.5rem;
   }
+
   .bc-split-row {
     grid-template-columns: 1fr;
     min-height: auto;
   }
+
   .bc-split-image {
     min-height: 320px;
     order: -1;
   }
+
   .bc-split-content {
     padding: 3rem 1.5rem;
   }
+
   .bc-enquiry-layout {
     grid-template-columns: 1fr;
     gap: 3rem;
     margin-bottom: 4rem;
   }
+
   .bc-grid-2 {
     grid-template-columns: 1fr;
   }
+
   .bc-grid-3 {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
+
   .bc-operational-banner {
     padding: 4.5rem 0;
   }
+
   .bc-operational-title {
     font-size: 1.8rem;
   }
+
   .bc-operational-box {
     padding: 1.8rem;
   }
@@ -994,38 +1026,48 @@ img {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
+
   .bc-stats-grid {
     gap: 2.5rem;
   }
+
   .bc-stat-number {
     font-size: 2.6rem;
   }
+
   .bc-grid-3 {
     grid-template-columns: 1fr;
   }
+
   .bc-form-row {
     grid-template-columns: 1fr;
   }
+
   .bc-form-submit-btn {
     width: 100%;
     float: none;
     text-align: center;
   }
+
   .bc-footer-center-content {
     margin-bottom: 2rem;
   }
+
   .bc-footer-company-name {
     font-size: 1.5rem;
     letter-spacing: 2px;
   }
+
   .bc-footer-commitment {
     font-size: 1rem;
   }
+
   .bc-sub-footer-inner {
     flex-direction: column;
     text-align: center;
     gap: 0.8rem;
   }
+
   .bc-sub-footer-links {
     flex-wrap: wrap;
     justify-content: center;
@@ -1037,63 +1079,80 @@ img {
   .bc-container {
     padding: 0 1rem;
   }
+
   .bc-hero-title-main {
     font-size: 2.2rem;
     letter-spacing: 0;
   }
+
   .bc-hero-screen {
     padding: 4rem 0 3rem 0;
   }
+
   .bc-furnace-heading {
     font-size: 1.8rem;
     margin-bottom: 2rem;
   }
+
   .bc-column-title {
     font-size: 1.1rem;
   }
+
   .bc-versatile-title {
     font-size: 1.3rem;
   }
+
   .bc-section-title-clean {
     font-size: 1.6rem;
     letter-spacing: 1.5px;
     margin-bottom: 1.2rem;
   }
+
   .bc-mission-text {
     font-size: 1rem;
   }
+
   .bc-cap-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
+
   .bc-gallery-5 {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .bc-mosaic-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .bc-split-image {
     min-height: 240px;
   }
+
   .bc-split-content {
     padding: 2.5rem 1rem;
   }
+
   .bc-footer-info-ribbon {
     flex-direction: column;
     align-items: flex-start;
     gap: 1.2rem;
   }
+
   .bc-operational-title {
     font-size: 1.5rem;
     letter-spacing: 1.5px;
   }
+
   .bc-operational-box {
     padding: 1.25rem 1rem;
     font-size: 0.88rem;
   }
+
   .bc-card {
     padding: 1.25rem;
   }
+
   .bc-section {
     padding: 3.5rem 0;
   }
@@ -1103,16 +1162,182 @@ img {
   .bc-hero-title-main {
     font-size: 1.85rem;
   }
+
   .bc-sub-footer-links {
     font-size: 0.78rem;
     gap: 0.5rem;
   }
+
   .bc-sub-footer-links span {
     display: none;
   }
+
   .bc-sub-footer-links a {
     display: inline-block;
     padding: 0.2rem 0.4rem;
   }
 }
 
+
+/* Compact & Simple Customer & Supplier Enquiry Banner (Reference Image Style) */
+.bc-simple-enquiry-section {
+  padding: 3rem 0;
+  background-color: #ffffff;
+}
+
+.bc-simple-enquiry-banner {
+  background: linear-gradient(135deg, #09025e 0%, #1e293b 100%);
+  border-radius: 20px;
+  padding: 3rem 3.5rem;
+  color: #ffffff;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3rem;
+  align-items: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.bc-simple-enquiry-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.bc-simple-enquiry-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #fef3c7;
+  color: #92400e;
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 0.35rem 0.9rem;
+  border-radius: 50px;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.5px;
+}
+
+.bc-simple-enquiry-title {
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  letter-spacing: -0.5px;
+}
+
+.bc-simple-enquiry-subtext {
+  font-size: 0.92rem;
+  color: #94a3b8;
+  line-height: 1.65;
+  max-width: 480px;
+}
+
+.bc-simple-enquiry-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 1.8rem;
+  color: #1e293b;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.bc-simple-enquiry-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.bc-simple-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.bc-simple-field-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #475569;
+}
+
+.bc-simple-field-input,
+.bc-simple-field-select {
+  width: 100%;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.88rem;
+  color: #0f172a;
+  outline: none;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.bc-simple-field-input:focus,
+.bc-simple-field-select:focus {
+  border-color: var(--bc-orange-btn);
+  background-color: #ffffff;
+}
+
+.bc-simple-enquiry-btn {
+  width: 100%;
+  background-color: var(--bc-orange-btn);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.9rem 1.5rem;
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(241, 90, 36, 0.35);
+  text-decoration: none;
+}
+
+.bc-simple-enquiry-btn:hover {
+  background-color: var(--bc-orange-hover);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(241, 90, 36, 0.45);
+}
+
+.bc-simple-enquiry-foot {
+  text-align: center;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 0.75rem;
+}
+
+.bc-simple-enquiry-foot a {
+  color: var(--bc-orange-btn);
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+@media (max-width: 992px) {
+  .bc-simple-enquiry-banner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 2.5rem 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .bc-simple-enquiry-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bc-simple-enquiry-banner {
+    padding: 1.75rem 1.25rem;
+    border-radius: 14px;
+  }
+}
