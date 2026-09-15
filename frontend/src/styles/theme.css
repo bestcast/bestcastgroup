@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700&display=swap');
+@import './scroll-effects.css';
 
 :root {
   --bc-orange: #d6611e;
@@ -515,15 +516,66 @@ img {
 }
 
 .bc-values-section {
+  position: relative;
   padding: 3rem 0 6rem 0;
   background-color: #ffffff;
+  overflow: hidden;
 }
 
-.bc-values-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 3rem;
+.bc-values-wrapper {
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+}
+
+.bc-values-left-col {
+  flex: 1;
+  max-width: 720px;
+  margin-left: max(1.5rem, calc((100vw - 1280px) / 2 + 1.5rem));
+  padding-right: 4rem;
+  box-sizing: border-box;
+}
+
+.bc-values-right-col {
+  width: 30%;
+  max-width: 460px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 0;
+  padding-right: 0;
+}
+
+.bc-values-right-img {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin-right: 0;
+}
+
+@media (max-width: 991px) {
+  .bc-values-wrapper {
+    flex-direction: column;
+    gap: 3rem;
+  }
+  .bc-values-left-col {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1.5rem;
+    max-width: 100%;
+    width: 100%;
+  }
+  .bc-values-right-col {
+    width: 100%;
+    max-width: 500px;
+    justify-content: center;
+    padding: 0 1.5rem;
+  }
 }
 
 .bc-value-item {

@@ -1,7 +1,11 @@
 import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { Diamond, CheckSquare, Layers, Box, Sparkles, FileText, Send } from 'lucide-react';
+import { Diamond, CheckSquare, Layers, Box, Sparkles, FileText, Send, ChevronDown } from 'lucide-react';
 import HeroLottieBanner from '../components/HeroLottieBanner';
+import ScrollProgress from '../components/ScrollProgress';
+import ScrollToTop from '../components/ScrollToTop';
+import ScrollReveal from '../components/ScrollReveal';
+import AnimatedCounter from '../components/AnimatedCounter';
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -98,17 +102,42 @@ export default function HomePage() {
     '/uploads/2023/03/Automotive-5-silverwhite-300x300.jpg'
   ];
 
+  const scrollToFirstSection = () => {
+    const target = document.querySelector('.bc-simple-enquiry-section');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.scrollTo({ top: window.innerHeight * 0.75, behavior: 'smooth' });
+    }
+  };
+
   return (
     <div>
+      {/* Top Scroll Progress Indicator */}
+      <ScrollProgress />
+
+      {/* Floating Smooth Scroll to Top Button */}
+      <ScrollToTop />
+
       {/* 1. Hero Section with Origin Lottie Animation and Net Lattice Background */}
-      <HeroLottieBanner />
+      <div style={{ position: 'relative' }}>
+        <HeroLottieBanner />
+        <div 
+          className="bc-hero-scroll-hint" 
+          onClick={scrollToFirstSection}
+          style={{ position: 'absolute', bottom: '1.5rem', left: '50%', transform: 'translateX(-50%)', zIndex: 10 }}
+        >
+          {/* <span>Scroll Down</span> */}
+          {/* <ChevronDown size={20} /> */}
+        </div>
+      </div>
 
       {/* 1.5. Compact & Simple Customer & Supplier Enquiry Banner (Reference Image Style) */}
       <section className="bc-simple-enquiry-section">
         <div className="bc-container">
           <div className="bc-simple-enquiry-banner">
             {/* Left Content */}
-            <div className="bc-simple-enquiry-left">
+            <ScrollReveal animation="fade-right" duration={800} className="bc-simple-enquiry-left">
               <div className="bc-simple-enquiry-pill">
                 <FileText size={15} />
                 <span>Customer & Supplier Enquiry</span>
@@ -119,10 +148,10 @@ export default function HomePage() {
               <p className="bc-simple-enquiry-subtext">
                 Share your requirements, component specifications, or vendor profile. Your enquiry will connect directly with our engineering and supply chain experts.
               </p>
-            </div>
+            </ScrollReveal>
 
             {/* Right White Card Form */}
-            <div className="bc-simple-enquiry-card">
+            <ScrollReveal animation="fade-left" duration={800} delay={150} className="bc-simple-enquiry-card">
               <form onSubmit={(e) => { e.preventDefault(); navigate('/enquiries'); }}>
                 <div className="bc-simple-enquiry-grid">
                   <div className="bc-simple-field-group">
@@ -163,12 +192,8 @@ export default function HomePage() {
                   <Send size={16} />
                   <span>Send Enquiry & Go to Contact Us</span>
                 </Link>
-
-                {/* <div className="bc-simple-enquiry-foot">
-                  Or <Link to="/enquiries">click here to redirect directly to full Contact Us page</Link>
-                </div> */}
               </form>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -176,23 +201,30 @@ export default function HomePage() {
       {/* 2. Dark Furnace Section: "Its Best Cast with Us" */}
       <section className="bc-furnace-section">
         <div className="bc-container">
-          <h2 className="bc-furnace-heading">
-            Its <em>Best Cast</em> with Us
-          </h2>
+          <ScrollReveal animation="fade-up" duration={700}>
+            <h2 className="bc-furnace-heading">
+              Its <em>Best Cast</em> with Us
+            </h2>
+          </ScrollReveal>
 
           <div className="bc-two-column-block">
-            <div>
-              <h3 className="bc-column-title">PRINCIPLE</h3>
-              <p className="bc-column-desc">
-                The guiding principle that motivates every individual at Best Cast. The company is based on trust, commitment, consistency, high standards of business ethics, and integrity. And this encourages us to accelerate our development.
-              </p>
-            </div>
-            <div>
-              <h3 className="bc-column-title">SUCCESS</h3>
-              <p className="bc-column-desc">
-                Customers are the testimony of our success. And our diligent workforce is the reason for our prosperity. Each of us has an intrinsic drive to achieve, and we take this spirit of excellence beyond the confines of the workplace.
-              </p>
-            </div>
+            <ScrollReveal animation="fade-right" delay={100} duration={800}>
+              <div>
+                <h3 className="bc-column-title">PRINCIPLE</h3>
+                <p className="bc-column-desc">
+                  The guiding principle that motivates every individual at Best Cast. The company is based on trust, commitment, consistency, high standards of business ethics, and integrity. And this encourages us to accelerate our development.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal animation="fade-left" delay={200} duration={800}>
+              <div>
+                <h3 className="bc-column-title">SUCCESS</h3>
+                <p className="bc-column-desc">
+                  Customers are the testimony of our success. And our diligent workforce is the reason for our prosperity. Each of us has an intrinsic drive to achieve, and we take this spirit of excellence beyond the confines of the workplace.
+                </p>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -200,91 +232,100 @@ export default function HomePage() {
       {/* 3. Versatile, Flexible & Agile */}
       <section className="bc-versatile-banner">
         <div className="bc-container">
-          <h2 className="bc-versatile-title">VERSATILE, FLEXIBLE & AGILE</h2>
-          <p className="bc-versatile-desc">
-            Our components range from simple to complex, raw to fully machined, and from 0.25 kg to over 50 kg in Die Castings. Our annual production volume for each component may vary from 200 to over 900,000 units.
-          </p>
+          <ScrollReveal animation="zoom-in" duration={850}>
+            <h2 className="bc-versatile-title">VERSATILE, FLEXIBLE & AGILE</h2>
+            <p className="bc-versatile-desc">
+              Our components range from simple to complex, raw to fully machined, and from 0.25 kg to over 50 kg in Die Castings. Our annual production volume for each component may vary from 200 to over 900,000 units.
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* 4. Stats Counter Bar */}
       <section className="bc-stats-bar">
         <div className="bc-container">
-          <div className="bc-stats-grid">
-            <div>
-              <div className="bc-stat-number">2000+</div>
-              <div className="bc-stat-label">PRODUCTS DESIGNED</div>
-            </div>
-
-            <div className="bc-stat-badge">
-              <div style={{
-                width: '74px',
-                height: '74px',
-                borderRadius: '50%',
-                border: '3px solid #d4af37',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '1.8rem',
-                fontWeight: 900,
-                color: '#d4af37',
-                marginBottom: '0.4rem'
-              }}>
-                50+
+          <ScrollReveal animation="fade-up" duration={800}>
+            <div className="bc-stats-grid">
+              <div>
+                <div className="bc-stat-number">
+                  <AnimatedCounter end={2000} suffix="+" duration={2200} />
+                </div>
+                <div className="bc-stat-label">PRODUCTS DESIGNED</div>
               </div>
-              <div className="bc-stat-label" style={{ color: '#ffffff' }}>Years of Manufacturing Excellence</div>
-            </div>
 
-            <div>
-              <div className="bc-stat-number">50+</div>
-              <div className="bc-stat-label">CUSTOMERS</div>
+              <div className="bc-stat-badge">
+                <div style={{
+                  width: '74px',
+                  height: '74px',
+                  borderRadius: '50%',
+                  border: '3px solid #d4af37',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '1.8rem',
+                  fontWeight: 900,
+                  color: '#d4af37',
+                  marginBottom: '0.4rem'
+                }}>
+                  <AnimatedCounter end={50} suffix="+" duration={2000} />
+                </div>
+                <div className="bc-stat-label" style={{ color: '#ffffff' }}>Years of Manufacturing Excellence</div>
+              </div>
+
+              <div>
+                <div className="bc-stat-number">
+                  <AnimatedCounter end={50} suffix="+" duration={2000} />
+                </div>
+                <div className="bc-stat-label">CUSTOMERS</div>
+              </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* 5. OUR MISSION */}
       <section className="bc-mission-section">
         <div className="bc-container">
-          <h2 className="bc-section-title-clean">OUR MISSION</h2>
-          <p className="bc-mission-text">
-            We will adapt to progressive methods in order to enhance our journey to become the most effective and efficient manufacturer of high-quality precision castings while adhering to the global needs of manufacturing in a sustainable manner.
-          </p>
+          <ScrollReveal animation="zoom-in" duration={800}>
+            <h2 className="bc-section-title-clean">OUR MISSION</h2>
+            <p className="bc-mission-text">
+              We will adapt to progressive methods in order to enhance our journey to become the most effective and efficient manufacturer of high-quality precision castings while adhering to the global needs of manufacturing in a sustainable manner.
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
-      {/* 6. OUR VALUES (with Large Finished Casting on Right) */}
+      {/* 6. OUR VALUES (with Large Finished Casting on Right Screen Edge) */}
       <section className="bc-values-section">
         <div className="bc-container">
-          <h2 className="bc-section-title-clean" style={{ textAlign: 'center', marginBottom: '3.5rem' }}>OUR VALUES</h2>
+          <ScrollReveal animation="fade-up">
+            <h2 className="bc-section-title-clean" style={{ textAlign: 'center', marginBottom: '3.5rem' }}>OUR VALUES</h2>
+          </ScrollReveal>
+        </div>
 
-          <div className="bc-values-grid">
-            <div>
-              {values.map((v, i) => (
-                <div key={i} className="bc-value-item">
+        <div className="bc-values-wrapper">
+          <div className="bc-values-left-col">
+            {values.map((v, i) => (
+              <ScrollReveal key={i} animation="fade-up" delay={i * 70} duration={600}>
+                <div className="bc-value-item">
                   <div className="bc-value-header">
                     <Diamond size={16} color="#000000" fill="#000000" />
                     <span>{v.title}</span>
                   </div>
                   <p className="bc-value-desc">{v.desc}</p>
                 </div>
-              ))}
-            </div>
+              </ScrollReveal>
+            ))}
+          </div>
 
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <div className="bc-values-right-col">
+            <ScrollReveal animation="fade-left" delay={250} duration={850}>
               <img 
-                src="/uploads/2023/03/Automotive-1-blueorange-400x250.jpg" 
-                alt="Precision Finished Aluminum Die Casting" 
-                style={{ 
-                  borderRadius: '50%', 
-                  maxWidth: '380px',
-                  width: '100%', 
-                  aspectRatio: '1/1',
-                  objectFit: 'cover',
-                  boxShadow: '0 15px 35px rgba(0,0,0,0.1)'
-                }} 
+                src="/uploads/2023/06/home-product-1kpx.jpg" 
+                alt="Precision Finished Aluminum Die Casting - Best Cast Group" 
+                className="bc-values-right-img"
               />
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -292,10 +333,12 @@ export default function HomePage() {
       {/* 7. OPERATIONAL EXCELLENCE */}
       <section className="bc-operational-banner">
         <div className="bc-container">
-          <h2 className="bc-operational-title">OPERATIONAL EXCELLENCE</h2>
-          <div className="bc-operational-box">
-            Best Cast is focused on fostering a culture of continuous improvement as we strive to be the best at what we do. Our advanced simulation software is utilised to enhance mould designs and regulate the casting process. We build even the most diverse and complex Components at scale, speed, and value using our production processes and systems. Our manufacturing techniques and systems have enabled us to combine knowledge with expertise, agility with precision, and passion with intuition to manufacture even the most versatile and complex Components at scale, speed, and value. Integrating quality control systems and real-time monitoring and inspection reduces defects and scrap. Best Cast's commitment to sustainability is a crucial element of our operational excellence endeavour which includes responsible sourcing of raw materials, implementing energy efficient manufacturing systems, eliminating wastes, and promoting recycling initiatives. By abiding to our core values, we assure components of superior quality, reduce costs, and secure a competitive advantage in our industry.
-          </div>
+          <ScrollReveal animation="fade-up" duration={800}>
+            <h2 className="bc-operational-title">OPERATIONAL EXCELLENCE</h2>
+            <div className="bc-operational-box">
+              Best Cast is focused on fostering a culture of continuous improvement as we strive to be the best at what we do. Our advanced simulation software is utilised to enhance mould designs and regulate the casting process. We build even the most diverse and complex Components at scale, speed, and value using our production processes and systems. Our manufacturing techniques and systems have enabled us to combine knowledge with expertise, agility with precision, and passion with intuition to manufacture even the most versatile and complex Components at scale, speed, and value. Integrating quality control systems and real-time monitoring and inspection reduces defects and scrap. Best Cast's commitment to sustainability is a crucial element of our operational excellence endeavour which includes responsible sourcing of raw materials, implementing energy efficient manufacturing systems, eliminating wastes, and promoting recycling initiatives. By abiding to our core values, we assure components of superior quality, reduce costs, and secure a competitive advantage in our industry.
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -303,29 +346,33 @@ export default function HomePage() {
       <section style={{ padding: '4.5rem 0', backgroundColor: '#ffffff' }}>
         <div className="bc-container">
           <div className="bc-two-column-block" style={{ gap: '4rem' }}>
-            <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
-              <Layers size={36} color="#555555" style={{ flexShrink: 0, marginTop: '5px' }} />
-              <div>
-                <h3 style={{ fontSize: '1.05rem', fontWeight: 800, letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: '0.6rem' }}>
-                  FULLY FINISHED COMPONENTS
-                </h3>
-                <p style={{ color: '#666666', fontSize: '0.9rem', lineHeight: '1.7' }}>
-                  With Best Cast's expertise and in-house capabilities across a wide spectrum of Die Casting and finishing processes, we offer fully finished products that are ready for your production line.
-                </p>
+            <ScrollReveal animation="fade-right" duration={750}>
+              <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
+                <Layers size={36} color="#555555" style={{ flexShrink: 0, marginTop: '5px' }} />
+                <div>
+                  <h3 style={{ fontSize: '1.05rem', fontWeight: 800, letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: '0.6rem' }}>
+                    FULLY FINISHED COMPONENTS
+                  </h3>
+                  <p style={{ color: '#666666', fontSize: '0.9rem', lineHeight: '1.7' }}>
+                    With Best Cast's expertise and in-house capabilities across a wide spectrum of Die Casting and finishing processes, we offer fully finished products that are ready for your production line.
+                  </p>
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
 
-            <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
-              <Box size={36} color="#555555" style={{ flexShrink: 0, marginTop: '5px' }} />
-              <div>
-                <h3 style={{ fontSize: '1.05rem', fontWeight: 800, letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: '0.6rem' }}>
-                  SINGLE SOURCE FOR CASTINGS
-                </h3>
-                <p style={{ color: '#666666', fontSize: '0.9rem', lineHeight: '1.7' }}>
-                  Cut down on supply chain complexity, reduce cost, exert effective quality control, and speed up your time-to-market with our end-to-end solutions for gravity die cast products.
-                </p>
+            <ScrollReveal animation="fade-left" delay={150} duration={750}>
+              <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
+                <Box size={36} color="#555555" style={{ flexShrink: 0, marginTop: '5px' }} />
+                <div>
+                  <h3 style={{ fontSize: '1.05rem', fontWeight: 800, letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: '0.6rem' }}>
+                    SINGLE SOURCE FOR CASTINGS
+                  </h3>
+                  <p style={{ color: '#666666', fontSize: '0.9rem', lineHeight: '1.7' }}>
+                    Cut down on supply chain complexity, reduce cost, exert effective quality control, and speed up your time-to-market with our end-to-end solutions for gravity die cast products.
+                  </p>
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -333,43 +380,51 @@ export default function HomePage() {
       {/* 9. QUALITY & CERTIFICATION */}
       <section style={{ padding: '2rem 0 5rem 0', textAlign: 'center', backgroundColor: '#ffffff' }}>
         <div className="bc-container">
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.6rem', marginBottom: '0.8rem' }}>
-            <Sparkles size={22} color="#555555" />
-            <h3 style={{ fontSize: '1.15rem', fontWeight: 800, letterSpacing: '1.5px', textTransform: 'uppercase' }}>
-              QUALITY & CERTIFICATION
-            </h3>
-          </div>
-          <p style={{ maxWidth: '850px', margin: '0 auto 2.5rem auto', color: '#666666', fontSize: '0.9rem', lineHeight: '1.7' }}>
-            At Best Cast, we guarantee that our components are produced in strict adherence to all regulatory production standards and compliance requirements. Rest assured that our components are developed in a suitable environment to ensure compliance, regardless of the project. Our company is ISO 9001:2015 (Quality Management Systems) and IATF 16949:2016 (automotive) certified.
-          </p>
+          <ScrollReveal animation="fade-up" duration={750}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.6rem', marginBottom: '0.8rem' }}>
+              <Sparkles size={22} color="#555555" />
+              <h3 style={{ fontSize: '1.15rem', fontWeight: 800, letterSpacing: '1.5px', textTransform: 'uppercase' }}>
+                QUALITY & CERTIFICATION
+              </h3>
+            </div>
+            <p style={{ maxWidth: '850px', margin: '0 auto 2.5rem auto', color: '#666666', fontSize: '0.9rem', lineHeight: '1.7' }}>
+              At Best Cast, we guarantee that our components are produced in strict adherence to all regulatory production standards and compliance requirements. Rest assured that our components are developed in a suitable environment to ensure compliance, regardless of the project. Our company is ISO 9001:2015 (Quality Management Systems) and IATF 16949:2016 (automotive) certified.
+            </p>
+          </ScrollReveal>
 
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap' }}>
-            <img 
-              src="/uploads/2023/06/Certificates-980x342.png" 
-              alt="ISO 9001:2015 and IATF 16949:2016 Certificates" 
-              style={{ maxWidth: '780px', width: '100%', height: 'auto' }}
-            />
-          </div>
+          <ScrollReveal animation="zoom-in" delay={200} duration={800}>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap' }}>
+              <img 
+                src="/uploads/2023/06/Certificates-980x342.png" 
+                alt="ISO 9001:2015 and IATF 16949:2016 Certificates" 
+                style={{ maxWidth: '780px', width: '100%', height: 'auto' }}
+              />
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* 10. OUR CAPABILITIES (Grid) */}
       <section style={{ padding: '5rem 0', backgroundColor: '#fafafa', borderTop: '1px solid #eeeeee' }}>
         <div className="bc-container">
-          <h2 className="bc-section-title-clean" style={{ textAlign: 'center' }}>OUR CAPABILITIES</h2>
+          <ScrollReveal animation="fade-up">
+            <h2 className="bc-section-title-clean" style={{ textAlign: 'center' }}>OUR CAPABILITIES</h2>
+          </ScrollReveal>
 
           <div className="bc-cap-grid">
             {capabilities.map((cap, i) => (
-              <div key={i} className="bc-cap-item">
-                <img 
-                  src={cap.icon} 
-                  alt={cap.title} 
-                  className="bc-cap-icon-img"
-                  onError={(e) => { e.currentTarget.style.opacity = '0.3'; }}
-                />
-                <h3 className="bc-cap-title">{cap.title}</h3>
-                <p className="bc-cap-desc">{cap.desc}</p>
-              </div>
+              <ScrollReveal key={i} animation="fade-up" delay={(i % 3) * 100} duration={650}>
+                <div className="bc-cap-item">
+                  <img 
+                    src={cap.icon} 
+                    alt={cap.title} 
+                    className="bc-cap-icon-img"
+                    onError={(e) => { e.currentTarget.style.opacity = '0.3'; }}
+                  />
+                  <h3 className="bc-cap-title">{cap.title}</h3>
+                  <p className="bc-cap-desc">{cap.desc}</p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -378,12 +433,17 @@ export default function HomePage() {
       {/* 11. PRODUCT GALLERY */}
       <section style={{ padding: '5rem 0 3rem 0', textAlign: 'center', backgroundColor: '#ffffff' }}>
         <div className="bc-container">
-          <h2 className="bc-section-title-clean">PRODUCT GALLERY</h2>
+          <ScrollReveal animation="fade-up">
+            <h2 className="bc-section-title-clean">PRODUCT GALLERY</h2>
+          </ScrollReveal>
+
           <div className="bc-gallery-5">
             {productImages.map((src, idx) => (
-              <div key={idx} className="bc-gallery-thumb">
-                <img src={src} alt={`Product Casting ${idx + 1}`} />
-              </div>
+              <ScrollReveal key={idx} animation="zoom-in" delay={idx * 90} duration={600}>
+                <div className="bc-gallery-thumb">
+                  <img src={src} alt={`Product Casting ${idx + 1}`} />
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -392,7 +452,10 @@ export default function HomePage() {
       {/* 12. INFRASTRUCTURE GALLERY */}
       <section style={{ padding: '3rem 0 5rem 0', textAlign: 'center', backgroundColor: '#ffffff' }}>
         <div className="bc-container">
-          <h2 className="bc-section-title-clean">INFRASTRUCTURE GALLERY</h2>
+          <ScrollReveal animation="fade-up">
+            <h2 className="bc-section-title-clean">INFRASTRUCTURE GALLERY</h2>
+          </ScrollReveal>
+
           <div className="bc-gallery-5">
             {[
               '/uploads/2023/03/DieCast-Foundry-2-400x516.jpg',
@@ -401,9 +464,11 @@ export default function HomePage() {
               '/uploads/2023/03/CNC-Machining-2-400x516.jpg',
               '/uploads/2023/03/Inspection-1-400x516.jpg'
             ].map((src, idx) => (
-              <div key={idx} className="bc-gallery-thumb">
-                <img src={src} alt={`Infrastructure Plant ${idx + 1}`} />
-              </div>
+              <ScrollReveal key={idx} animation="zoom-in" delay={idx * 90} duration={600}>
+                <div className="bc-gallery-thumb">
+                  <img src={src} alt={`Infrastructure Plant ${idx + 1}`} />
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
