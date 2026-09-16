@@ -603,10 +603,35 @@ img {
 
 /* Operational Excellence Banner */
 .bc-operational-banner {
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/uploads/2023/03/CNC-Machining-400x516.jpg') center/cover no-repeat;
+  position: relative;
+  overflow: hidden;
   color: #ffffff;
   padding: 6rem 0;
   text-align: center;
+}
+
+.bc-operational-bg-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bc-operational-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 1;
 }
 
 .bc-operational-title {
@@ -620,8 +645,11 @@ img {
 .bc-operational-box {
   max-width: 960px;
   margin: 0 auto;
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
   padding: 2.5rem;
   font-size: 0.95rem;
   line-height: 1.8;
@@ -698,71 +726,303 @@ img {
   transform: scale(1.05);
 }
 
-/* Footer Banner */
-.bc-dual-footer {
-  background: linear-gradient(90deg, #106754 0%, #157e67 45%, #d6611e 65%, #f15a24 100%);
-  color: #ffffff;
-  padding: 4rem 0 3rem 0;
+/* ==========================================================================
+   Modern Redesigned Corporate Footer
+   ========================================================================== */
+.bc-modern-footer {
+  width: 100%;
+  font-family: inherit;
+  color: #94a3b8;
+  background-color: #000000;
   position: relative;
-  background-image:
-    radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 20%),
-    linear-gradient(90deg, #106754 0%, #157e67 45%, #d6611e 65%, #f15a24 100%);
 }
 
-.bc-footer-center-content {
-  text-align: center;
-  max-width: 750px;
-  margin: 0 auto 3rem auto;
+/* 1. Top Call to Action Ribbon */
+.bc-footer-cta-ribbon {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  border-bottom: 2px solid var(--bc-orange-btn);
+  padding: 3rem 0;
+  position: relative;
+  overflow: hidden;
 }
 
-.bc-footer-company-name {
-  font-size: 1.8rem;
-  font-weight: 800;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-bottom: 0.3rem;
+.bc-footer-cta-ribbon::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(241, 90, 36, 0.12) 0%, transparent 70%);
+  pointer-events: none;
 }
 
-.bc-footer-tagline {
-  font-size: 0.95rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  opacity: 0.9;
-  margin-bottom: 1.2rem;
-}
-
-.bc-footer-commitment {
-  font-size: 1.15rem;
-  line-height: 1.6;
-  opacity: 0.95;
-}
-
-.bc-footer-info-ribbon {
+.bc-footer-cta-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.18);
-  padding-top: 2rem;
-  font-size: 0.88rem;
+  gap: 2rem;
 }
 
-.bc-footer-info-item {
-  display: flex;
+.bc-footer-cta-text {
+  max-width: 650px;
+}
+
+.bc-footer-cta-pill {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: var(--bc-orange-btn);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.bc-footer-cta-text h3 {
+  color: #ffffff;
+  font-size: 1.65rem;
+  font-weight: 800;
+  margin: 0 0 0.4rem 0;
+  line-height: 1.3;
+}
+
+.bc-footer-cta-text p {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.bc-footer-cta-btn {
+  display: inline-flex;
   align-items: center;
   gap: 0.6rem;
+  background: linear-gradient(135deg, #f15a24 0%, #d64a18 100%);
+  color: #ffffff;
+  padding: 0.9rem 2rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(241, 90, 36, 0.35);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Sub-footer bottom bar */
-.bc-sub-footer {
-  background-color: var(--bc-black);
+.bc-footer-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(241, 90, 36, 0.5);
+  background: linear-gradient(135deg, #ff6b35 0%, #e05320 100%);
   color: #ffffff;
-  padding: 1.2rem 0;
+}
+
+/* 2. Main Footer Content Grid */
+.bc-footer-main {
+  background: radial-gradient(circle at 50% 0%, rgba(30, 41, 59, 0.4) 0%, #000000 75%);
+  padding: 4.5rem 0 3.5rem 0;
+}
+
+.bc-footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.9fr 1fr 1.1fr;
+  gap: 3rem;
+}
+
+.bc-footer-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.bc-footer-logo-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin-bottom: 1.2rem;
+}
+
+.bc-footer-logo-text {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 2px;
+}
+
+.bc-footer-logo-sub {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--bc-orange-btn);
+  letter-spacing: 2px;
+}
+
+.bc-footer-about {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: #94a3b8;
+  margin-bottom: 1.5rem;
+}
+
+.bc-footer-cert-badges {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.bc-cert-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #e2e8f0;
+}
+
+.bc-cert-icon {
+  color: var(--bc-orange-btn);
+}
+
+.bc-footer-socials {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.bc-social-link {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.bc-social-link:hover {
+  background-color: var(--bc-orange-btn);
+  color: #ffffff;
+  border-color: var(--bc-orange-btn);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(241, 90, 36, 0.35);
+}
+
+.bc-footer-heading {
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.6rem;
+}
+
+.bc-footer-heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 36px;
+  height: 2px;
+  background-color: var(--bc-orange-btn);
+  border-radius: 2px;
+}
+
+.bc-footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.bc-footer-links li a {
+  color: #94a3b8;
+  font-size: 0.88rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+}
+
+.bc-footer-links li a:hover {
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+.bc-footer-links li a svg {
+  color: var(--bc-orange-btn);
+  transition: transform 0.2s ease;
+}
+
+.bc-footer-links li a:hover svg {
+  transform: translateX(2px);
+}
+
+.bc-footer-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.bc-footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  font-size: 0.86rem;
+}
+
+.bc-contact-icon {
+  color: var(--bc-orange-btn);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.bc-footer-contact-item strong {
+  display: block;
+  color: #ffffff;
+  font-size: 0.88rem;
+  margin-bottom: 0.15rem;
+}
+
+.bc-footer-contact-item p {
+  margin: 0;
+  color: #94a3b8;
+  line-height: 1.5;
+}
+
+.bc-footer-contact-item a {
+  color: #94a3b8;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.bc-footer-contact-item a:hover {
+  color: var(--bc-orange-btn);
+}
+
+.bc-phone-numbers {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+/* 3. Sub-footer Bottom Bar */
+.bc-footer-bottom {
+  background-color:#000000;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 1.4rem 0;
   font-size: 0.82rem;
 }
 
-.bc-sub-footer-inner {
+.bc-footer-bottom-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -770,9 +1030,55 @@ img {
   gap: 1rem;
 }
 
-.bc-sub-footer-links {
+.bc-footer-copyright strong {
+  color: #ffffff;
+}
+
+.bc-footer-legal-links {
   display: flex;
-  gap: 1.5rem;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.bc-footer-legal-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.bc-footer-legal-links a:hover {
+  color: #ffffff;
+}
+
+.bc-legal-divider {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 0.75rem;
+}
+
+/* Footer Responsive Breakpoints */
+@media (max-width: 992px) {
+  .bc-footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .bc-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .bc-footer-cta-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .bc-footer-bottom-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
 }
 
 /* Global Responsive Component Classes */
@@ -1391,5 +1697,135 @@ img {
   .bc-simple-enquiry-banner {
     padding: 1.75rem 1.25rem;
     border-radius: 14px;
+  }
+}
+
+/* ==========================================================================
+   3D Coverflow Gallery Component (Product & Infrastructure Galleries)
+   ========================================================================== */
+.bc-coverflow-container {
+  position: relative;
+  width: 100%;
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 1.5rem 0 3rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  user-select: none;
+}
+
+.bc-coverflow-stage {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+  overflow: hidden;
+}
+
+.bc-coverflow-card {
+  position: absolute;
+  width: 300px;
+  height: 370px;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18);
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
+              opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
+              box-shadow 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform, opacity;
+}
+
+.bc-coverflow-card.active {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35), 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.bc-coverflow-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.bc-coverflow-card:hover .bc-coverflow-img {
+  transform: scale(1.04);
+}
+
+.bc-coverflow-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.75rem 1.25rem 1rem 1.25rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.45) 60%, transparent 100%);
+  color: #ffffff;
+  text-align: left;
+  pointer-events: none;
+}
+
+.bc-coverflow-caption h4 {
+  font-size: 0.95rem;
+  font-weight: 800;
+  margin: 0 0 0.2rem 0;
+  letter-spacing: 0.5px;
+}
+
+.bc-coverflow-caption p {
+  font-size: 0.8rem;
+  margin: 0;
+  opacity: 0.85;
+}
+
+/* Circular navigation buttons matching reference image */
+.bc-coverflow-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  z-index: 15;
+}
+
+.bc-coverflow-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid #222222;
+  background-color: #ffffff;
+  color: #222222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+.bc-coverflow-btn:hover {
+  background-color: #111111;
+  color: #ffffff;
+  border-color: #111111;
+  transform: scale(1.08);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.bc-coverflow-btn:active {
+  transform: scale(0.96);
+}
+
+@media (max-width: 768px) {
+  .bc-coverflow-stage {
+    height: 330px;
+  }
+
+  .bc-coverflow-card {
+    width: 230px;
+    height: 290px;
+    border-radius: 16px;
   }
 }

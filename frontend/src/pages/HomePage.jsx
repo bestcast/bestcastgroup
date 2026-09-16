@@ -6,6 +6,7 @@ import ScrollProgress from '../components/ScrollProgress';
 import ScrollToTop from '../components/ScrollToTop';
 import ScrollReveal from '../components/ScrollReveal';
 import AnimatedCounter from '../components/AnimatedCounter';
+import CoverflowGallery from '../components/CoverflowGallery';
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -100,6 +101,82 @@ export default function HomePage() {
     '/uploads/2023/03/Automotive-3-silverwhite-300x300.jpg',
     '/uploads/2023/03/Automotive-4-silverwhite-300x300.jpg',
     '/uploads/2023/03/Automotive-5-silverwhite-300x300.jpg'
+  ];
+
+  const productGalleryItems = [
+    {
+      title: 'Automotive Housing Casting',
+      subtext: 'High Precision Die Cast Component',
+      src: '/uploads/2023/03/Automotive-1-silverwhite.jpg'
+    },
+    {
+      title: 'Structural Mounting Bracket',
+      subtext: 'Lightweight Aluminum Alloy',
+      src: '/uploads/2023/03/Automotive-2-silverwhite.jpg'
+    },
+    {
+      title: 'Precision Hydraulic Valve Body',
+      subtext: 'Complex Internal Flow Passage',
+      src: '/uploads/2023/03/Automotive-3-silverwhite.jpg'
+    },
+    {
+      title: 'Cylinder Head Cover Assembly',
+      subtext: 'Pressure Tight & Heat Treated',
+      src: '/uploads/2023/03/Automotive-4-silverwhite.jpg'
+    },
+    {
+      title: 'Rotor & Stator Housing',
+      subtext: 'CNC Machined to Sub-Micron Tolerance',
+      src: '/uploads/2023/03/Automotive-5-silverwhite.jpg'
+    },
+    {
+      title: 'Power Transmission Housing',
+      subtext: 'High Strength Gravity Die Casting',
+      src: '/uploads/2023/03/Automotive-6-silverwhite.jpg'
+    },
+    {
+      title: 'Pump & Filter Body',
+      subtext: 'Corrosion-Resistant Finish',
+      src: '/uploads/2023/03/Automotive-7-silverwhite.jpg'
+    }
+  ];
+
+  const infrastructureGalleryItems = [
+    {
+      title: 'Robotic Autopour System',
+      subtext: 'Automated Molten Metal Dispensing',
+      src: '/uploads/2023/03/Autopour-Robot2.jpg'
+    },
+    {
+      title: 'Gravity Die Casting Cell',
+      subtext: '50+ Years Operations Expertise',
+      src: '/uploads/2023/03/Gravity-Die-Casting-1.jpg'
+    },
+    {
+      title: 'Multi-Axis Precision CNC Line',
+      subtext: 'High Volume Rapid Machining',
+      src: '/uploads/2023/03/CNC-Machining-2.jpg'
+    },
+    {
+      title: 'Aluminum Melting Furnace',
+      subtext: 'Regulated Temperature Alloy Room',
+      src: '/uploads/2023/03/DieCast-Foundry-2.jpg'
+    },
+    {
+      title: 'Quality Control Inspection',
+      subtext: 'CMM & Spectrometer Verification',
+      src: '/uploads/2023/03/Inspection-1.jpg'
+    },
+    {
+      title: 'Secondary Finishing & Grinding',
+      subtext: 'Precision Trimming & Shot Blasting',
+      src: '/uploads/2023/03/FinishingGrinding.jpg'
+    },
+    {
+      title: 'Automated Helium Leak Testing',
+      subtext: '100% Leak Proof Quality Assurance',
+      src: '/uploads/2023/03/Helium-Leak-Testing.jpg'
+    }
   ];
 
   const scrollToFirstSection = () => {
@@ -332,7 +409,17 @@ export default function HomePage() {
 
       {/* 7. OPERATIONAL EXCELLENCE */}
       <section className="bc-operational-banner">
-        <div className="bc-container">
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          className="bc-operational-bg-video"
+        >
+          <source src="https://www.apple.com/105/media/us/mac-studio/2026/e5b92529-6fd3-439c-9461-9d111718310f/anim/specs-ultra/large.mp4" type="video/mp4" />
+        </video>
+        <div className="bc-operational-overlay"></div>
+        <div className="bc-container" style={{ position: 'relative', zIndex: 2 }}>
           <ScrollReveal animation="fade-up" duration={800}>
             <h2 className="bc-operational-title">OPERATIONAL EXCELLENCE</h2>
             <div className="bc-operational-box">
@@ -430,47 +517,29 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 11. PRODUCT GALLERY */}
-      <section style={{ padding: '5rem 0 3rem 0', textAlign: 'center', backgroundColor: '#ffffff' }}>
+      {/* 11. PRODUCT GALLERY (3D Coverflow Slider) */}
+      <section style={{ padding: '5rem 0 3rem 0', textAlign: 'center', backgroundColor: '#ffffff', overflow: 'hidden' }}>
         <div className="bc-container">
           <ScrollReveal animation="fade-up">
             <h2 className="bc-section-title-clean">PRODUCT GALLERY</h2>
           </ScrollReveal>
 
-          <div className="bc-gallery-5">
-            {productImages.map((src, idx) => (
-              <ScrollReveal key={idx} animation="zoom-in" delay={idx * 90} duration={600}>
-                <div className="bc-gallery-thumb">
-                  <img src={src} alt={`Product Casting ${idx + 1}`} />
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
+          <ScrollReveal animation="zoom-in" delay={150} duration={800}>
+            <CoverflowGallery items={productGalleryItems} autoPlayInterval={3800} />
+          </ScrollReveal>
         </div>
       </section>
 
-      {/* 12. INFRASTRUCTURE GALLERY */}
-      <section style={{ padding: '3rem 0 5rem 0', textAlign: 'center', backgroundColor: '#ffffff' }}>
+      {/* 12. INFRASTRUCTURE GALLERY (3D Coverflow Slider) */}
+      <section style={{ padding: '3rem 0 5rem 0', textAlign: 'center', backgroundColor: '#ffffff', overflow: 'hidden' }}>
         <div className="bc-container">
           <ScrollReveal animation="fade-up">
             <h2 className="bc-section-title-clean">INFRASTRUCTURE GALLERY</h2>
           </ScrollReveal>
 
-          <div className="bc-gallery-5">
-            {[
-              '/uploads/2023/03/DieCast-Foundry-2-400x516.jpg',
-              '/uploads/2023/03/Gravity-Die-Casting-1-400x516.jpg',
-              '/uploads/2023/03/Robotic-Autopour-400x516.jpg',
-              '/uploads/2023/03/CNC-Machining-2-400x516.jpg',
-              '/uploads/2023/03/Inspection-1-400x516.jpg'
-            ].map((src, idx) => (
-              <ScrollReveal key={idx} animation="zoom-in" delay={idx * 90} duration={600}>
-                <div className="bc-gallery-thumb">
-                  <img src={src} alt={`Infrastructure Plant ${idx + 1}`} />
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
+          <ScrollReveal animation="zoom-in" delay={150} duration={800}>
+            <CoverflowGallery items={infrastructureGalleryItems} autoPlayInterval={4200} />
+          </ScrollReveal>
         </div>
       </section>
     </div>
