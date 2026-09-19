@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
 import { Factory, Eye } from 'lucide-react';
+import CoverflowGallery from '../components/CoverflowGallery';
 
 export default function InfrastructureGallery() {
+  const coverflowItems = [
+    { title: 'Die Casting Foundry', subtext: 'High Precision Tooling & Dies', src: '/uploads/2023/03/DieCast-Foundry-2-400x516.jpg' },
+    { title: 'Gravity Die Casting', subtext: 'Automated Metal Pouring', src: '/uploads/2023/03/Gravity-Die-Casting-1-400x516.jpg' },
+    { title: 'Robotic Autopour', subtext: 'Multi-Axis Robotic Slurry Dipping', src: '/uploads/2023/03/Robotic-Autopour-400x516.jpg' },
+    { title: 'CNC Precision Machining', subtext: 'High Speed Vertical Machining Centers', src: '/uploads/2023/03/CNC-Machining-1-1-400x516.jpg' },
+    { title: 'Quality Metrology Lab', subtext: '3D CMM & Optical Spectrometer', src: '/uploads/2023/03/Inspection-1-400x516.jpg' }
+  ];
+
   const facilities = [
     { title: 'Tool Room & CAD/CAM Die Manufacturing', category: 'Tooling', image: '/uploads/2023/06/infra-toolroom.jpg', desc: 'CNC machining center for producing high-precision aluminum wax dies with zero tooling draft variance.' },
     { title: 'Hydraulic Wax Pattern Injection Presses', category: 'Pattern Making', image: '/uploads/2023/06/infra-wax.jpg', desc: 'Semi-automatic temperature controlled wax injection machines ensuring consistent dimensional shrinkage.' },
@@ -33,6 +42,17 @@ export default function InfrastructureGallery() {
           </p>
         </div>
       </div>
+
+      {/* Featured Auto & Manual Swipe Infrastructure Coverflow Gallery */}
+      <section style={{ padding: '3.5rem 0 1rem 0', backgroundColor: '#ffffff', borderBottom: '1px solid #f1f5f9' }}>
+        <div className="bc-container" style={{ textAlign: 'center' }}>
+          <span style={{ color: 'var(--bc-orange)', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 700, fontSize: '0.85rem' }}>
+            3D Facility Tour
+          </span>
+          <h2 className="bc-section-title-clean" style={{ marginBottom: '1rem' }}>INFRASTRUCTURE SHOWCASE</h2>
+          <CoverflowGallery items={coverflowItems} autoPlayInterval={4200} />
+        </div>
+      </section>
 
       <section className="bc-section">
         <div className="bc-container">

@@ -525,7 +525,7 @@ export default function HomePage() {
           </ScrollReveal>
 
           <ScrollReveal animation="zoom-in" delay={150} duration={800}>
-            <CoverflowGallery items={productGalleryItems} autoPlayInterval={3800} />
+            <CoverflowGallery items={productGalleryItems} autoPlayInterval={1900} />
           </ScrollReveal>
         </div>
       </section>
@@ -538,7 +538,7 @@ export default function HomePage() {
           </ScrollReveal>
 
           <ScrollReveal animation="zoom-in" delay={150} duration={800}>
-            <CoverflowGallery items={infrastructureGalleryItems} autoPlayInterval={4200} />
+            <CoverflowGallery items={infrastructureGalleryItems} autoPlayInterval={2000} />
           </ScrollReveal>
         </div>
       </section>

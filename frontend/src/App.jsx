@@ -14,11 +14,14 @@ import BlogPage from './pages/BlogPage';
 import BlogPostPage from './pages/BlogPostPage';
 import LegalPage from './pages/LegalPage';
 
+import LogoSplash from './components/LogoSplash';
+
 import './styles/theme.css';
 
 export default function App() {
   return (
     <BrowserRouter>
+      <LogoSplash />
       <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         <Header />
         

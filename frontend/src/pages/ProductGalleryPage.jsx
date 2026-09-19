@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { Package, Search, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import CoverflowGallery from '../components/CoverflowGallery';
 
 export default function ProductGalleryPage() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState('All');
+
+  const galleryItems = [
+    { title: 'Valve Body Castings', subtext: 'CF8M Stainless Steel', src: '/uploads/2023/03/Stainless-Steel-Castings-400x516.jpg' },
+    { title: 'Pump Impeller', subtext: 'Duplex & Super Duplex Steel', src: '/uploads/2023/03/Precision-Investment-Casting-2-400x516.jpg' },
+    { title: 'Automotive Components', subtext: 'Alloy & Carbon Steel', src: '/uploads/2023/03/Precision-Investment-Casting-3-400x516.jpg' },
+    { title: 'Flow Meter Housings', subtext: 'High-Integrity Pressure Castings', src: '/uploads/2023/03/Stainless-Steel-Castings-2-400x516.jpg' },
+    { title: 'Sanitary Fittings', subtext: 'Electropolished Mirror Finish', src: '/uploads/2023/03/Precision-Investment-Casting-400x516.jpg' },
+  ];
 
   useEffect(() => {
     fetch('http://localhost:5000/api/products')
@@ -40,6 +49,17 @@ export default function ProductGalleryPage() {
           </p>
         </div>
       </div>
+
+      {/* Featured Auto & Manual Swipe Product Coverflow Gallery */}
+      <section style={{ padding: '3.5rem 0 1rem 0', backgroundColor: '#ffffff', borderBottom: '1px solid #f1f5f9' }}>
+        <div className="bc-container" style={{ textAlign: 'center' }}>
+          <span style={{ color: 'var(--bc-orange)', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 700, fontSize: '0.85rem' }}>
+            Interactive Showcase
+          </span>
+          <h2 className="bc-section-title-clean" style={{ marginBottom: '1rem' }}>FEATURED PRODUCTS</h2>
+          <CoverflowGallery items={galleryItems} autoPlayInterval={3800} />
+        </div>
+      </section>
 
       <section className="bc-section">
         <div className="bc-container">

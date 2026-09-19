@@ -1,22 +1,25 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-export default function CoverflowGallery({ items = [], autoPlayInterval = 4000 }) {
+export default function CoverflowGallery({ items = [], autoPlayInterval = 2000 }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const dragStartX = useRef(0);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
   const total = items.length;
+  const speedInterval = Math.max(1000, Math.round(autoPlayInterval / 2));
 
-  // Auto-play effect
+  // Auto-swipe effect (2x faster speed)
   useEffect(() => {
-    if (isHovered || total <= 1) return;
+    if (isHovered || isDragging || total <= 1) return;
     const timer = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % total);
-    }, autoPlayInterval);
+    }, speedInterval);
     return () => clearInterval(timer);
-  }, [isHovered, total, autoPlayInterval]);
+  }, [isHovered, isDragging, total, speedInterval]);
 
   const handlePrev = () => {
     setActiveIndex((prev) => (prev - 1 + total) % total);
@@ -26,8 +29,10 @@ export default function CoverflowGallery({ items = [], autoPlayInterval = 4000 }
     setActiveIndex((prev) => (prev + 1) % total);
   };
 
+  // Touch Swipe Handlers
   const handleTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX;
+    touchEndX.current = e.touches[0].clientX;
   };
 
   const handleTouchMove = (e) => {
@@ -42,19 +47,71 @@ export default function CoverflowGallery({ items = [], autoPlayInterval = 4000 }
     }
   };
 
+  // Mouse Drag Handlers
+  const handleMouseDown = (e) => {
+    e.preventDefault();
+    setIsDragging(true);
+    dragStartX.current = e.clientX;
+  };
+
+  const handleMouseUp = (e) => {
+    if (!isDragging) return;
+    setIsDragging(false);
+    const diff = dragStartX.current - e.clientX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) handleNext();
+      else handlePrev();
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'ArrowLeft') {
+      handlePrev();
+    } else if (e.key === 'ArrowRight') {
+      handleNext();
+    }
+  };
+
   if (!items || items.length === 0) return null;
 
   return (
     <div 
-      className="bc-coverflow-container"
+      className={`bc-coverflow-container ${isDragging ? 'is-dragging' : ''}`}
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseLeave={() => {
+        setIsHovered(false);
+        setIsDragging(false);
+      }}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
+      role="region"
+      aria-label="Interactive Gallery Slider"
     >
       {/* 3D Stage */}
       <div className="bc-coverflow-stage">
+        {/* Side Overlay Manual Swipe Arrows */}
+        <button 
+          className="bc-coverflow-side-btn left"
+          onClick={handlePrev}
+          aria-label="Swipe previous"
+          title="Previous Image"
+        >
+          <ChevronLeft size={24} />
+        </button>
+        <button 
+          className="bc-coverflow-side-btn right"
+          onClick={handleNext}
+          aria-label="Swipe next"
+          title="Next Image"
+        >
+          <ChevronRight size={24} />
+        </button>
+
         {items.map((item, index) => {
           // Calculate cyclic shortest offset relative to activeIndex
           let offset = index - activeIndex;
@@ -111,13 +168,14 @@ export default function CoverflowGallery({ items = [], autoPlayInterval = 4000 }
                 transform: `translateX(${translateX}%) scale(${scale}) rotateY(${rotateY}deg)`,
                 opacity: opacity,
                 zIndex: zIndex,
-                cursor: isActive ? 'default' : 'pointer',
+                cursor: isActive ? 'grab' : 'pointer',
               }}
             >
               <img 
                 src={item.src || item} 
                 alt={item.title || `Gallery image ${index + 1}`} 
                 className="bc-coverflow-img"
+                draggable={false}
               />
               {item.title && (
                 <div className="bc-coverflow-caption">
@@ -130,23 +188,19 @@ export default function CoverflowGallery({ items = [], autoPlayInterval = 4000 }
         })}
       </div>
 
-      {/* Navigation Arrow Buttons */}
-      <div className="bc-coverflow-controls">
-        <button 
-          className="bc-coverflow-btn" 
-          onClick={handlePrev}
-          aria-label="Previous slide"
-        >
-          <ArrowLeft size={18} />
-        </button>
-        <button 
-          className="bc-coverflow-btn" 
-          onClick={handleNext}
-          aria-label="Next slide"
-        >
-          <ArrowRight size={18} />
-        </button>
+      {/* Pagination Dots */}
+      <div className="bc-coverflow-dots">
+        {items.map((_, idx) => (
+          <button
+            key={idx}
+            className={`bc-coverflow-dot ${idx === activeIndex ? 'active' : ''}`}
+            onClick={() => setActiveIndex(idx)}
+            aria-label={`Go to slide ${idx + 1}`}
+            title={`Slide ${idx + 1}`}
+          />
+        ))}
       </div>
     </div>
   );
 }
+

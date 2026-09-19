@@ -1,7 +1,17 @@
 import React from 'react';
 import { ChevronDown } from 'lucide-react';
+import CoverflowGallery from '../components/CoverflowGallery';
 
 export default function CapabilitiesPage() {
+  const infraItems = [
+    { title: 'Die Casting Foundry', subtext: 'Precision Castings', src: '/uploads/2023/03/DieCast-Foundry-2-400x516.jpg' },
+    { title: 'Foundry Floor', subtext: 'Medium Frequency Induction Furnaces', src: '/uploads/2023/03/DieCast-Foundry-4-400x516.jpg' },
+    { title: 'Gravity Die Casting Unit', subtext: 'High Integrity Pouring', src: '/uploads/2023/03/Gravity-Die-Casting-1-400x516.jpg' },
+    { title: 'Robotic Autopour System', subtext: 'Automated Dipping & Coating', src: '/uploads/2023/03/Robotic-Autopour-400x516.jpg' },
+    { title: 'CNC & VMC Machine Shop', subtext: 'Sub-Micron Precision Machining', src: '/uploads/2023/03/CNC-Machining-1-1-400x516.jpg' },
+    { title: 'Quality Inspection Station', subtext: '3D Coordinate Measuring Machine', src: '/uploads/2023/03/Inspection-1-400x516.jpg' },
+    { title: 'Spectrometry & Metallurgy Lab', subtext: '28-Channel Chemical Analysis', src: '/uploads/2023/03/CMM-2D-Spectrometer-400x516.jpg' }
+  ];
   const steps = [
     {
       title: 'DESIGN ENGINEERING AND MANUFACTURING SOLUTIONS',
@@ -187,32 +197,10 @@ export default function CapabilitiesPage() {
           </div>
         </div>
 
-        {/* INFRASTRUCTURE GALLERY MOSAIC */}
-        <div style={{ textAlign: 'center', marginTop: '6rem' }}>
+        {/* INFRASTRUCTURE GALLERY (Auto & Manual Swipe Coverflow Slider) */}
+        <div style={{ textAlign: 'center', marginTop: '6rem', overflow: 'hidden' }}>
           <h2 className="bc-section-title-clean">INFRASTRUCTURE GALLERY</h2>
-          <div className="bc-mosaic-grid">
-            {[
-              '/uploads/2023/03/DieCast-Foundry-2-400x516.jpg',
-              '/uploads/2023/03/DieCast-Foundry-4-400x516.jpg',
-              '/uploads/2023/03/Gravity-Die-Casting-1-400x516.jpg',
-              '/uploads/2023/03/Gravity-Die-Casting-2-400x516.jpg',
-              '/uploads/2023/03/Gravity-Die-Casting-3-400x516.jpg',
-              '/uploads/2023/03/Robotic-Autopour-400x516.jpg',
-              '/uploads/2023/03/CNC-Machining-1-1-400x516.jpg',
-              '/uploads/2023/03/CNC-Machining-2-400x516.jpg',
-              '/uploads/2023/03/CNC-Machining-3-400x516.jpg',
-              '/uploads/2023/03/Inspection-1-400x516.jpg',
-              '/uploads/2023/03/Inspection-2-400x516.jpg',
-              '/uploads/2023/03/Inspection-3-400x516.jpg',
-              '/uploads/2023/03/Helium-Leak-Test-400x516.jpg',
-              '/uploads/2023/03/CMM-2D-Spectrometer-400x516.jpg',
-              '/uploads/2023/03/Ultrasonic-Washing-1-400x516.jpg'
-            ].map((img, i) => (
-              <div key={i} style={{ aspectRatio: '1/1', overflow: 'hidden', backgroundColor: '#f0f0f0' }}>
-                <img src={img} alt={`Infrastructure facility ${i + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-              </div>
-            ))}
-          </div>
+          <CoverflowGallery items={infraItems} autoPlayInterval={4200} />
         </div>
       </div>
     </div>

@@ -1,63 +1,32 @@
-import React, { useEffect, useRef, useState } from 'react';
-import lottie from 'lottie-web';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function HeroLottieBanner() {
-  const containerRef = useRef(null);
-  const animRef = useRef(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    if (!containerRef.current) return;
-
-    if (animRef.current) {
-      animRef.current.destroy();
-    }
-
-    const isMobile = window.innerWidth <= 768;
-    const animationPath = isMobile
-      ? '/assets/Hero-mobile-10-Sep-2023.json'
-      : '/assets/Hero-dktp-10-Sep-2023.json';
-
-    try {
-      animRef.current = lottie.loadAnimation({
-        container: containerRef.current,
-        renderer: 'svg',
-        loop: true,
-        autoplay: true,
-        path: animationPath,
-        rendererSettings: {
-          preserveAspectRatio: 'xMidYMid slice',
-          clearCanvas: true,
-        }
-      });
-
-      animRef.current.addEventListener('DOMLoaded', () => {
-        setLoading(false);
-      });
-    } catch (err) {
-      console.error('Failed to load lottie animation:', err);
-    }
-
-    return () => {
-      if (animRef.current) {
-        animRef.current.destroy();
-      }
-    };
-  }, []);
-
   return (
-    <section className="bc-lottie-hero-section">
-      <div className="bc-lottie-hero-inner">
-        {loading && (
-          <div className="bc-lottie-skeleton">
-            <div className="bc-spinner" />
+    <section className="bc-hero-fullscreen-section">
+      <div className="bc-hero-fullscreen-inner">
+        
+        {/* Sleek Dark Ambient Background Overlay */}
+        <div className="bc-hero-dark-backdrop" />
+
+        {/* Spyker Reference Matching Hero Typography Overlay */}
+        <div className="bc-spyker-hero-overlay">
+          <span className="bc-hero-sub-caption">
+            THE BEGINNING OF BESTCAST
+          </span>
+
+          <h1 className="bc-hero-main-headline">
+            THE NEXT CHAPTER OF <br />
+            BESTCAST
+          </h1>
+
+          <div className="bc-hero-cta-wrap">
+            <Link to="/capabilities" className="bc-spyker-rect-btn">
+              DISCOVER BESTCAST MANUFACTURING SOLUTIONS
+            </Link>
           </div>
-        )}
-        <div 
-          ref={containerRef} 
-          className="bc-lottie-container"
-          style={{ opacity: loading ? 0 : 1, transition: 'opacity 0.3s ease' }}
-        />
+        </div>
+
       </div>
     </section>
   );

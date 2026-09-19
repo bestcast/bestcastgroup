@@ -1,4 +1,5 @@
 import React from 'react';
+import CoverflowGallery from '../components/CoverflowGallery';
 
 export default function IndustrialAppsPage() {
   const sectors = [
@@ -16,54 +17,48 @@ export default function IndustrialAppsPage() {
     },
     {
       title: 'DIE CAST COMPONENTS FOR DEFENCE INDUSTRY',
-      desc: 'Die casting is commonly used in the production of parts for defence vehicles due to its ability to produce high-quality, precise, and complex parts with excellent strength-to-weight ratios. Transmission components such as housings, covers, and valves; suspension components such as control arms, steering knuckles, and shock absorber housings; and many braking and engine components are manufactured using Gravity Die Casting due to their strength, durability, heat dissipation and dimensional accuracy parameters. High-performance Die Cast components can withstand harsh environments, extreme temperatures and heavy loads, all crucial requirements in Defence Vehicles.',
+      desc: 'Die casting is commonly used in the production of parts for defence vehicles due to its ability to produce high-quality, precise, and complex parts with excellent strength-to-weight ratios.',
       image: '/uploads/2023/03/Engineering-3-blueorange.jpg',
       reverse: false
     },
     {
       title: 'DIE CAST COMPONENTS FOR POWER GENERATION INDUSTRY',
-      desc: 'Best Cast manufactures various components for Power Generation applications. These include Generator Components like housings and cooling fins; Turbine components like blades and shrouds; Heat Sinks; and Connectors. Due to the high strengths, durability, precision, and tight tolerances afforded by Die Cast components, they find various applications within the Power Generation Industry.',
+      desc: 'Best Cast manufactures various components for Power Generation applications. These include Generator Components like housings and cooling fins; Turbine components like blades and shrouds; Heat Sinks; and Connectors.',
       image: '/uploads/2023/03/Powergen-14-blueorange.jpg',
       reverse: true
-    },
-    {
-      title: 'DIE CAST COMPONENTS FOR RAILWAY INDUSTRY',
-      desc: 'Die Casting is commonly used in the production of parts for the railway sector. Many brake system components such as brake housings; suspension components like shock absorber housings; and many electrical and lighting components are produced using the Die Casting process.',
-      image: '/uploads/2023/03/Automotive-2-blueorange.jpg',
-      reverse: false
-    },
-    {
-      title: 'DIE CAST COMPONENTS FOR MARINE INDUSTRY',
-      desc: 'Die Casting is commonly used in the production of parts for Marine sectors. The quality of Aluminium in marine is the key to its ability to resist corrosion, as its nature is to oxidize quickly, it reacts with oxygen to form aluminum oxide. This aluminum oxide layer is chemically bound to the surface, and it seals the core aluminum from any further reaction and prevent corrosion. Due to its corrosion resistance, aluminum alloy is widely used for marine application.',
-      image: '/uploads/2023/03/Powergen-3-blueorange.jpg',
-      reverse: true
-    },
-    {
-      title: 'DIE CAST COMPONENTS FOR GENERAL ENGINEERING INDUSTRY',
-      desc: 'Die casting is commonly used in the manufacture of valve components due to their need to withstand high pressures, temperatures, and corrosive environments. Die casting can also produce parts with high strength, stiffness, and dimensional accuracy making it a suitable manufacturing process for valve components. Another common application for die cast products are pump components such as impellers, casings, and housings. These parts require high precision, tight tolerances, and resistance to corrosion and wear.',
-      image: '/uploads/2023/03/Engineering-2-blueorange.jpg',
-      reverse: false
     }
   ];
 
   const galleryItems = [
-    '/uploads/2023/03/Automotive-1-silverwhite-300x300.jpg',
-    '/uploads/2023/03/Automotive-2-silverwhite-300x300.jpg',
-    '/uploads/2023/03/Automotive-3-silverwhite-300x300.jpg',
-    '/uploads/2023/03/Automotive-4-silverwhite-300x300.jpg',
-    '/uploads/2023/03/Automotive-5-silverwhite-300x300.jpg',
-    '/uploads/2023/03/Automotive-6-silverwhite-480x480.jpg',
-    '/uploads/2023/03/Automotive-7-silverwhite-480x480.jpg',
-    '/uploads/2023/03/Automotive-8-silverwhite-480x480.jpg'
+    { title: 'Automotive Housing', subtext: 'Precision Cast Component', src: '/uploads/2023/03/Automotive-1-silverwhite-300x300.jpg' },
+    { title: 'Transmission Bracket', subtext: 'Alloy Steel Casting', src: '/uploads/2023/03/Automotive-2-silverwhite-300x300.jpg' },
+    { title: 'Engine Manifold', subtext: 'High Heat Tolerant', src: '/uploads/2023/03/Automotive-3-silverwhite-300x300.jpg' },
+    { title: 'Actuator Housing', subtext: 'CF8M Stainless Steel', src: '/uploads/2023/03/Automotive-4-silverwhite-300x300.jpg' },
+    { title: 'Pump Impeller Unit', subtext: 'Precision Machined', src: '/uploads/2023/03/Automotive-5-silverwhite-300x300.jpg' },
+    { title: 'Flange Joint', subtext: 'High Pressure Rated', src: '/uploads/2023/03/Automotive-6-silverwhite-480x480.jpg' },
+    { title: 'Control Valve Body', subtext: 'Investment Cast', src: '/uploads/2023/03/Automotive-7-silverwhite-480x480.jpg' },
+    { title: 'Hydraulic Fitting', subtext: 'Zero Vacuum Defect', src: '/uploads/2023/03/Automotive-8-silverwhite-480x480.jpg' }
   ];
 
   return (
     <div style={{ backgroundColor: '#ffffff' }}>
-      {/* Alternating Industry Split Rows matching screenshot */}
+      <div className="bc-page-hero">
+        <div className="bc-container">
+          <span style={{ color: 'var(--bc-orange)', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 700, fontSize: '0.9rem' }}>
+            Application Sectors
+          </span>
+          <h1 className="bc-page-hero-title">
+            Industrial Applications
+          </h1>
+          <p className="bc-page-hero-desc">
+            Serving global OEMs with precision investment cast components across demanding engineering domains.
+          </p>
+        </div>
+      </div>
+
       {sectors.map((s, idx) => (
         <section key={idx} style={{ borderBottom: '1px solid #f0f0f0' }}>
           <div className="bc-split-row">
-            {/* If reverse: Image first, else Text first on desktop; responsive on mobile */}
             {s.reverse ? (
               <>
                 <div 
@@ -73,15 +68,7 @@ export default function IndustrialAppsPage() {
                   aria-label={s.title}
                 />
                 <div className="bc-split-content">
-                  <h2 style={{
-                    fontSize: '1.4rem',
-                    fontWeight: 900,
-                    letterSpacing: '2px',
-                    textTransform: 'uppercase',
-                    color: '#111111',
-                    marginBottom: '1.2rem',
-                    lineHeight: '1.4'
-                  }}>
+                  <h2 style={{ fontSize: '1.4rem', fontWeight: 900, letterSpacing: '2px', textTransform: 'uppercase', color: '#111111', marginBottom: '1.2rem', lineHeight: '1.4' }}>
                     {s.title}
                   </h2>
                   <p style={{ fontSize: '0.92rem', lineHeight: '1.85', color: '#555555' }}>
@@ -92,15 +79,7 @@ export default function IndustrialAppsPage() {
             ) : (
               <>
                 <div className="bc-split-content">
-                  <h2 style={{
-                    fontSize: '1.4rem',
-                    fontWeight: 900,
-                    letterSpacing: '2px',
-                    textTransform: 'uppercase',
-                    color: '#111111',
-                    marginBottom: '1.2rem',
-                    lineHeight: '1.4'
-                  }}>
+                  <h2 style={{ fontSize: '1.4rem', fontWeight: 900, letterSpacing: '2px', textTransform: 'uppercase', color: '#111111', marginBottom: '1.2rem', lineHeight: '1.4' }}>
                     {s.title}
                   </h2>
                   <p style={{ fontSize: '0.92rem', lineHeight: '1.85', color: '#555555' }}>
@@ -119,27 +98,11 @@ export default function IndustrialAppsPage() {
         </section>
       ))}
 
-      {/* PRODUCT GALLERY (Responsive 4-column to 2-column grid) */}
-      <section style={{ padding: '5rem 0', textAlign: 'center', backgroundColor: '#ffffff' }}>
+      {/* PRODUCT GALLERY (Interactive Auto & Manual Coverflow Slider) */}
+      <section style={{ padding: '4rem 0 3rem 0', textAlign: 'center', backgroundColor: '#ffffff', overflow: 'hidden' }}>
         <div className="bc-container">
           <h2 className="bc-section-title-clean">PRODUCT GALLERY</h2>
-
-          <div className="bc-gallery-4">
-            {galleryItems.map((img, i) => (
-              <div key={i} style={{
-                backgroundColor: '#f3f4f6',
-                borderRadius: '8px',
-                overflow: 'hidden',
-                aspectRatio: '1/1',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.03)'
-              }}>
-                <img src={img} alt={`Product Component ${i + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-              </div>
-            ))}
-          </div>
+          <CoverflowGallery items={galleryItems} autoPlayInterval={3800} />
         </div>
       </section>
     </div>
